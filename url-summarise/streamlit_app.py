@@ -16,15 +16,6 @@ st.subheader('Summarise URL')
 
 url = st.text_input("URL", label_visibility="collapsed")
 
-hide_streamlit_style = """
-            <style>
-            #MainMenu {visibility: hidden;}
-            footer {visibility: hidden;}
-            header {visibility: hidden;}
-            </style>
-            """
-st.markdown(hide_streamlit_style, unsafe_allow_html=True)
-
 # If 'Summarize' button is clicked
 if st.button("Summarise"):
     # Validate inputs
@@ -37,7 +28,7 @@ if st.button("Summarise"):
                 loader = UnstructuredURLLoader(urls=[url])
                 data = loader.load()
                 llm=HuggingFaceHub(repo_id="declare-lab/flan-alpaca-large", model_kwargs={"temperature":0, "max_length":512})
-                prompt_template = """Write a summary of the following in 200-250 words:
+                prompt_template = """Write a summary of the following in 400-450 words:
 
                     {text}
 

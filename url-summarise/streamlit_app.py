@@ -12,12 +12,19 @@ HUGGINGFACEHUB_API_TOKEN = os.environ["HUGGINGFACEHUB_API_TOKEN"]
 
 
 # Streamlit app
-st.subheader('Summarize URL')
+st.subheader('Summarise URL')
 
 url = st.text_input("URL", label_visibility="collapsed")
 
+hide_streamlit_style = """
+            <style>
+            iframe iframe {border: none;}
+            </style>
+            """
+st.markdown(hide_streamlit_style, unsafe_allow_html=True)
+
 # If 'Summarize' button is clicked
-if st.button("Summarize"):
+if st.button("Summarise"):
     # Validate inputs
     if not validators.url(url):
         st.error("Please enter a valid URL.")
@@ -28,7 +35,7 @@ if st.button("Summarize"):
                 loader = UnstructuredURLLoader(urls=[url])
                 data = loader.load()
                 llm=HuggingFaceHub(repo_id="declare-lab/flan-alpaca-large", model_kwargs={"temperature":0, "max_length":512})
-                prompt_template = """Write a summary of the following in 200-250 words split into 2 paragraphs:
+                prompt_template = """Write a summary of the following in 200-250 words:
 
                     {text}
 
@@ -38,5 +45,5 @@ if st.button("Summarize"):
                 summary = chain.run(data)
                 st.success(summary)
         except Exception as e:
-            st.error("I'm sorry something went wrong! Please try again with a different URL")
+            #st.error("I'm sorry something went wrong! Please try again with a different URL")
             st.error(e)

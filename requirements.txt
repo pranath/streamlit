@@ -11,3 +11,4 @@ wikipedia
 validators
 unstructured
 pdf2image
+huggingface_hub

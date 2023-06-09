@@ -27,7 +27,7 @@ if st.button("Summarise"):
                 # Load URL data
                 loader = UnstructuredURLLoader(urls=[url])
                 data = loader.load()
-                llm=HuggingFaceHub(repo_id="declare-lab/flan-alpaca-large", model_kwargs={"temperature":0, "max_length":512})
+                llm=HuggingFaceHub(repo_id="declare-lab/flan-alpaca-large", model_kwargs={"temperature":0.3, "max_length":512})
                 prompt_template = """Write a summary of the following in 400-450 words:
 
                     {text}

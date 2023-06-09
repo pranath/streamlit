@@ -10,3 +10,4 @@ faiss-cpu
 wikipedia
 validators
 unstructured
+pdf2image

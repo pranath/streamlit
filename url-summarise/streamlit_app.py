@@ -18,8 +18,9 @@ url = st.text_input("URL", label_visibility="collapsed")
 
 hide_streamlit_style = """
             <style>
-            iframe {border: none !important;}
-            iframe .embeddedAppMetaInfoBar_container__LZA_B {display: none !important;}
+            #MainMenu {visibility: hidden;}
+            footer {visibility: hidden;}
+            header {visibility: hidden;}
             </style>
             """
 st.markdown(hide_streamlit_style, unsafe_allow_html=True)

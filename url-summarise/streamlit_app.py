@@ -39,3 +39,4 @@ if st.button("Summarize"):
                 st.success(summary)
         except Exception as e:
             st.error("I'm sorry something went wrong! Please try again with a different URL")
+            st.error(e)

@@ -8,7 +8,8 @@ chromadb
 tiktoken
 faiss-cpu
 wikipedia
-validators
 unstructured
 pdf2image
 huggingface_hub
+pypdf
+stream-chat

@@ -16,5 +16,5 @@ pypdf
 stream-chat
 streamlit_js_eval
 pytube
-PyPDF2
+pypdf2
 htmlimport

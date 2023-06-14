@@ -1,5 +1,5 @@
 import validators, streamlit as st
-from PyPDF2 import PdfReader
+from pypdf import PdfReader
 from langchain.embeddings import HuggingFaceHubEmbeddings
 from langchain.text_splitter import CharacterTextSplitter
 from langchain.vectorstores import FAISS

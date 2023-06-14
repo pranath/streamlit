@@ -1,6 +1,4 @@
-import sys
 import validators, streamlit as st
-sys.path.append('..')
 from PyPDF2 import PdfReader
 from langchain.embeddings import HuggingFaceHubEmbeddings
 from langchain.text_splitter import CharacterTextSplitter
@@ -8,7 +6,9 @@ from langchain.vectorstores import FAISS
 from langchain.chains.question_answering import load_qa_chain
 from langchain import HuggingFaceHub
 from streamlit_js_eval import streamlit_js_eval
-import common
+from httpimport import *
+with github_repo('pranath', 'streamlit') : 
+  import common
 
 st.header("Chat with a Document")
 # Create document input field

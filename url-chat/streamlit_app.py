@@ -1,6 +1,5 @@
 import sys
 import validators, streamlit as st
-sys.path.append('..')
 from langchain import HuggingFaceHub
 from langchain.document_loaders import UnstructuredURLLoader
 from langchain.embeddings import HuggingFaceHubEmbeddings
@@ -8,7 +7,8 @@ from langchain.text_splitter import CharacterTextSplitter
 from langchain.vectorstores import FAISS
 from langchain.chains.question_answering import load_qa_chain
 from streamlit_js_eval import streamlit_js_eval
-import common
+with github_repo('pranath', 'streamlit') : 
+  import common
 
 # Set default model
 repo_id = "IAJw/declare-flan-alpaca-large-18378" 

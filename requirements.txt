@@ -14,3 +14,5 @@ pdf2image
 huggingface_hub
 pypdf
 stream-chat
+streamlit_js_eval
+pytube

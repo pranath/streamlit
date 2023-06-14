@@ -50,7 +50,7 @@ if url:
     try:
       with st.spinner("Please wait..."):
         docs = knowledge_base.similarity_search(user_question)
-        llm = HuggingFaceHub(repo_id=common.repo_id, model_kwargs=common.model_kwargs)
+        llm = HuggingFaceHub(repo_id=repo_id, model_kwargs=model_kwargs)
         chain = load_qa_chain(llm, chain_type="stuff")
         response = chain.run(input_documents=docs, question=user_question)
         st.success(response)

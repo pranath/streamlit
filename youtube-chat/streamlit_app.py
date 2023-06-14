@@ -1,6 +1,4 @@
-import sys
 import validators, streamlit as st
-sys.path.append('..')
 from langchain import HuggingFaceHub
 from langchain.document_loaders import YoutubeLoader
 from langchain.embeddings import HuggingFaceHubEmbeddings
@@ -9,8 +7,28 @@ from langchain.vectorstores import FAISS
 from langchain.chains.question_answering import load_qa_chain
 from streamlit_js_eval import streamlit_js_eval
 from urllib.parse import urlparse
-import textwrap
-import common
+from dotenv import load_dotenv, find_dotenv
+import os
+
+# Set Reference Links
+st.set_page_config(
+    initial_sidebar_state="expanded",
+    menu_items={
+        'About': "https://livingdatalab.com/",
+        'Get Help': 'https://livingdatalab.com/about.html',
+        'Report a bug': "https://livingdatalab.com/about.html",
+    }
+)
+
+# Load API token
+load_dotenv(find_dotenv())
+HUGGINGFACEHUB_API_TOKEN = os.environ["HUGGINGFACEHUB_API_TOKEN"]
+
+# Set default model
+repo_id = "IAJw/declare-flan-alpaca-large-18378" 
+model_kwargs = {"temperature":0, "max_length":512}
+
+#-------------------------------------------------------------------
 
 st.header("Chat with a YouTube Video")
 # Create URL input field
@@ -38,7 +56,7 @@ if url:
           try:
             with st.spinner("Please wait..."):
               docs = knowledge_base.similarity_search(user_question)
-              llm = HuggingFaceHub(repo_id=common.repo_id, model_kwargs=common.model_kwargs)
+              llm = HuggingFaceHub(repo_id=repo_id, model_kwargs=model_kwargs)
               chain = load_qa_chain(llm, chain_type="stuff")
               response = chain.run(input_documents=docs, question=user_question)
               st.success(response)

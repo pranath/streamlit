@@ -6,7 +6,6 @@ from langchain.vectorstores import FAISS
 from langchain.chains.question_answering import load_qa_chain
 from langchain import HuggingFaceHub
 from streamlit_js_eval import streamlit_js_eval
-from httpimport import *
 from dotenv import load_dotenv, find_dotenv
 import os
 

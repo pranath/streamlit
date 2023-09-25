@@ -57,6 +57,4 @@ if pdf is not None:
         st.success(response)
     except Exception as e:
       st.error(e)
-  if st.button("Chat with a new Document"):
-    streamlit_js_eval(js_expressions="parent.window.location.reload()")
     
